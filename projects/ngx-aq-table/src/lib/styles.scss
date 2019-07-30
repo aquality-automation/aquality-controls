@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: var(--button-primary);
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
+  color: var(--main-background);
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  outline: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  filter: brightness(50%);
+}
+
+.btn span {
+  cursor: inherit;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn:enabled span.right-arrow:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover:enabled span {
+  padding-right: 25px;
+}
+
+.btn:hover:enabled span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-lg {
+  padding: 15px;
+  margin: 15px;
+}
+
+.btn:hover:enabled {
+  filter: brightness(90%);
+}
+
+.btn:active:enabled {
+  filter: brightness(80%);
+}
+
+.center {
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-hover:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.btn-hover:active {
+  filter: brightness(80%);
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.clearfix::after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

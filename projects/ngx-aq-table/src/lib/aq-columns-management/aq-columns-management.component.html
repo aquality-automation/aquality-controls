@@ -1,0 +1,17 @@
+<div class="column-selector-holder">
+  <div class="mtc-selector mtc-left" cdkDropList #columnsToHideList="cdkDropList" [cdkDropListData]="columnsToHide"
+    [cdkDropListConnectedTo]="[columnsToShowList]" (cdkDropListDropped)="drop($event)">
+    <div class="mtc-header">
+        Hidden:
+    </div>
+    <div *ngFor="let hidden of columnsToHide" class="option" cdkDrag>{{hidden.name}}</div>
+  </div>
+  <div class="devider"></div>
+  <div class="mtc-selector mtc-right" cdkDropList #columnsToShowList="cdkDropList" [cdkDropListData]="columnsToShow"
+    [cdkDropListConnectedTo]="[columnsToHideList]" (cdkDropListDropped)="drop($event)">
+    <div class="mtc-header">
+        Shown:
+    </div>
+    <div *ngFor="let shown of columnsToShow" class="option" cdkDrag>{{shown.name}}</div>
+  </div>
+</div>

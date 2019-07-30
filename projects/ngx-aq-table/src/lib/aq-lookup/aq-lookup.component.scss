@@ -1,0 +1,107 @@
+li {
+  user-select: none;
+}
+
+.lookup-field {
+  text-align: left;
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+.ms-placeholder {
+  user-select: none;
+  padding: 3px 2px 0px 0px;
+  float: left;
+  color: var(--main-grey);
+}
+
+.ms-main-selector {
+  background-color: var(--main-content-bg);
+}
+
+.ms-box {
+  float: left;
+  width: max-content;
+  height: max-content;
+  margin: 2px 2px 0 0;
+  padding: 0 2px 0 2px;
+  border: 1px solid var(--main-grey);
+  font-size: 13px;
+  border-collapse: separate; 
+  border-radius:5px; 
+}
+
+.ms.caret {
+  padding: 3px 2px 0px 0px;
+}
+
+.caret {
+  float: right;
+}
+
+input.autocomplete {
+  max-height: 25px;
+  padding: 3px 5px 4px 5px;
+}
+
+.autocomplete{
+  min-height: 25px;
+  font: normal 13px Verdana, Arial, sans-serif;
+  width: 100%;
+  padding: 0 5px 3px 5px;
+  border: solid 1px var(--default);
+  border-radius: 3px;
+  overflow: auto;
+}
+
+.selector-button{
+  width: 100%;
+  height: 25px;
+}
+
+.button-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: calc(100% - 10px);
+  float: left;
+}
+
+.selector-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 135px;
+  margin-bottom: 0px;
+}
+
+.selector-suggestions {
+  max-height:200px;
+  position: absolute;
+  z-index:1100;
+  left: 0px; 
+  right: 0px;
+  border-bottom-left-radius:5px; 
+  border-bottom-right-radius:5px; 
+  background-color: var(--main-content-bg);
+}
+
+.selector-suggestions ul {
+  border-bottom-left-radius:5px; 
+  border-bottom-right-radius:5px; 
+  border: 1px solid var(--button-primary);
+  overflow-y: auto;
+  max-height:200px;
+  padding:0;
+  margin:0;
+}
+
+.selector-suggestions li {
+  background-color: var(--main-content-bg);
+  padding:5px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.lookup-text {
+  padding-left: 8px;
+}

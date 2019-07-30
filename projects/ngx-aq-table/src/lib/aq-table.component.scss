@@ -1,0 +1,206 @@
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tbody tr {
+  background-color: var(--main-content-bg);
+  height: 36px;
+  border-bottom: solid 1px var(--main-sidebar-bg);
+}
+
+thead,
+tbody tr {
+  width: 100%;
+  table-layout: auto;
+}
+
+thead {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.data-holder {
+  overflow: auto;
+}
+
+.hidden-header > th {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.table-actions .table-name {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-right: 40px;
+  padding-bottom: 15px;
+  position: relative;
+  font-size: large;
+  float: left;
+}
+
+.table-name .table-stat {
+  filter: brightness(80%);
+  position: absolute;
+  font-size: 12px;
+  font-weight: normal;
+  right: 0;
+}
+
+table th,
+table td {
+  padding: 5px;
+}
+
+table th p,
+table td p {
+  padding-left: 8px;
+  margin: 0;
+}
+
+thead tr.table-actions {
+  height: 40px;
+  background-color: var(--main-sidebar-bg);
+  color: var(--main-content-bg);
+}
+
+thead tr.table-actions td {
+  position: relative;
+}
+
+tr.headers {
+  height: 40px;
+  font-weight: bold;
+  border-bottom: solid 1px var(--main-sidebar-bg);
+  background-color: var(--main-background);
+}
+
+tr.filters {
+  background-color: var(--main-sidebar-bg);
+  height: 30px;
+  border-bottom: solid 1px var(--main-sidebar-bg);
+}
+
+tr.filters input {
+  background-color: var(--main-content-bg);
+}
+
+.table-actions .buttons-section {
+  float: right;
+}
+
+.buttons-section div {
+  width: fit-content;
+}
+
+th {
+  text-align: left;
+}
+
+td.fit,
+th.fit {
+  white-space: nowrap !important;
+  width: 1% !important;
+}
+
+th.date-full {
+  width: 200px;
+}
+
+th.wh-200 {
+  width: 200px;
+}
+
+th.wh-300 {
+  width: 200px;
+}
+
+th.wh-400 {
+  width: 200px;
+}
+
+.hidden {
+  display: none;
+}
+
+tr.mt-row-hover:hover {
+  background-color: var(--main-hover-background) !important;
+  cursor: pointer;
+}
+
+.scroll-icon svg * {
+  stroke: var(--main-content-bg) !important;
+}
+
+.scroll-icon {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  z-index: 20000;
+  width: 10px;
+  height: 19px;
+}
+
+#scroll-icon-wheel {
+  animation: hideshow 1s ease infinite;
+}
+
+#scroll-down-arrow {
+  animation: popdown 2s ease infinite;
+}
+#scroll-up-arrow {
+  animation: popup 2s ease infinite;
+}
+
+@keyframes hideshow {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes popup {
+  0% {
+    transform: translateY(0px);
+  }
+  45% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes popdown {
+  0% {
+    transform: translateY(2px);
+  }
+  45% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}

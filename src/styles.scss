@@ -1,0 +1,101 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--main-background);
+  font: normal 13px Verdana, Arial, sans-serif;
+  color: #252525;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 10px 0 10px 0;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+html {
+  min-width: 360px;
+  min-height: 400px;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  --main-content-bg: #edf1f3;
+  --main-sidebar-bg: #3b4752;
+  --main-text-color: black;
+  --a1qa-red: #773d3d;
+  --main-background: #fefffc;
+  --main-hover-background: #e1e1e1;
+  --main-grey: grey;
+  --main-black: black;
+  --button-primary: #3b4752;
+  --button-hovered: grey;
+  --default: #444;
+  --info: #5bc0de;
+  --success: #5cb85c;
+  --warning: #f0ad4e;
+  --error: #d9534f;
+}
+.index {
+  width: 15px;
+}
+
+.table-wrapper {
+  margin: 50px;
+  height: 300px;
+}
+
+.table-example {
+  padding: 10px;
+  background-color: #5bc0de;
+}
+
+.wrapper {
+  margin: 50px;
+}
+
+.example {
+  float: left;
+  padding: 10px;
+
+}
+
+.lookup-example {
+  background-color: #5cb85c;
+}
+
+
+.autocomplete-example {
+  background-color: #d9534f;
+}
+
+.ms-example {
+  background-color: #773d3d;
+}
+
+.inline-example {
+  background-color: seashell;
+}
+
+.button-example {
+  background-color: burlywood;
+}
+
+.sm-padding-left {
+  padding-left: 5px;
+}
+
+.Row
+{
+  display: flex;
+  flex-direction:row;
+}
+.Column
+{
+  flex: 1 1 0px;
+}

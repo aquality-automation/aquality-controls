@@ -1,0 +1,4 @@
+<button class="btn no-margin" type="button" [ngClass]="{'enabled': toggleStatus}" (click)="toggle()">
+  {{name}}
+  <fa-icon *ngIf="icon" [icon]="fa[icon]"> </fa-icon>
+</button>

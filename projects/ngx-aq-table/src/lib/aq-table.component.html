@@ -1,0 +1,105 @@
+<div *ngIf="columnsManagement" [@slideInOut]>
+  <aq-columns-management [columnsToShow]="columnsToShow" [columnsToHide]="columnsToHide">
+  </aq-columns-management>
+</div>
+<div libColWidthDirective libDataHeightDirective>
+  <table *ngIf="data && columnsToShow">
+    <thead>
+      <tr class="table-actions">
+        <td [attr.colspan]="columnsToShow.length">
+          <div class="scroll-icon" title="Scroll to see all rows.">
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+              xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="15" height="29"
+              viewBox="0 0 210 297" version="1.1" id="svg8" sodipodi:docname="mouse_scroll.svg"
+              inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+              <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+                <g id="g4679" transform="matrix(1.3451781,0,0,1.3451781,-38.357917,-0.89620693)">
+                  <rect ry="53.562111"
+                    style="opacity:1;fill:none;stroke:#000000;stroke-width:20;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    y="45.189373" x="57.373901" height="135.85043" width="107.12422"/>
+                  <path id="scroll-icon-wheel" 
+                    d="m 111.125,75.550484 c 0,24.479386 0,24.479386 0,24.479386 v 0"
+                    style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                  <path id="scroll-up-arrow" 
+                    d="M 86.178567,25.99107 C 111.125,6.7142853 111.125,6.7142853 111.125,6.7142853 v 0 c 24.19048,18.5208337 24.19048,18.5208337 24.19048,18.5208337"
+                    style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                  <path id="scroll-down-arrow" 
+                    d="M 86.178566,196.01521 C 111.125,215.292 111.125,215.292 111.125,215.292 v 0 c 24.19048,-18.52084 24.19048,-18.52084 24.19048,-18.52084"
+                    style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="table-name">
+            {{tableName}}
+            <div class="table-stat">
+              {{data.length}} of {{data.length}}
+            </div>
+          </div>
+          <div class="buttons-section">
+            <aq-button class="btn no-margin" icon="faColumns" [toggleStatus]="false" (toggled)="toggleCMMode($event)">
+            </aq-button>
+            <aq-button class="btn no-margin" icon="faFilter" [toggleStatus]="false"
+              (toggled)="toggleFilterMode($event)"></aq-button>
+            <aq-button class="btn no-margin" icon="faEdit" [toggleStatus]="false" (toggled)="toggleEditMode($event)">
+            </aq-button>
+            <aq-button class="btn no-margin" icon="faSync" (clicked)="update()"></aq-button>
+          </div>
+        </td>
+      </tr>
+      <tr class="headers">
+        <th *ngFor="let column of columnsToShow" [setClass]="column.class" [ngClass]="{ 'btn-hover': column.sorting }"
+          [libSorter]="column.sorting ? { order:'desc', property:column.property } : undefined" (sorted)="sort($event)">
+          <p>{{column.name}}</p>
+          <fa-icon class="hidden" [icon]="sortCaret"></fa-icon>
+        </th>
+      </tr>
+      <tr *ngIf="filterMode" class="filters" [@filter]="filterMode ? 'in' : 'out'">
+        <td *ngFor="let column of columnsToShow" [setClass]="column.class">
+          <input *ngIf="!isLookup(column.type) && !isDate(column.type) && column.filter" class="aq-input"
+            [ngModel]="textFilterData(column.property)" placeholder="{{column?.name}} Filter" maxlength="100"
+            (keyup)="handleFilterChange(column, $event.currentTarget.value)">
+        </td>
+      </tr>
+    </thead>
+  </table>
+  <div class="data-holder">
+    <table *ngIf="data && columnsToShow">
+      <thead>
+        <tr class="hidden-header">
+          <th *ngFor="let column of columnsToShow" [setClass]="column.class" class="hidden-header">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataRow of filteredData" class="mt-row-hover" (click)="rowClicked(dataRow)">
+          <td *ngFor="let column of columnsToShow">
+            <p *ngIf="(!editMode  && !isLookup(column.type)) || (!column.editable && !isLookup(column.type))">
+              {{getData(dataRow, column)}}</p>
+            <aq-inline-input *ngIf="editMode && column.editable && column.type === 'string'"
+              [max]="column.editTextOptions.maxLenght" [min]="column.editTextOptions.minLenght"
+              [ngModel]="getData(dataRow, column)" (ngModelChange)="updateData(dataRow, column, $event)"
+              (error)="onError($event)" [disabled]='!column.editable'></aq-inline-input>
+            <aq-lookup *ngIf="column.type === 'autocomplete'" [array]="column.lookup.array"
+              [propertiesToShow]="column.lookup.propertiesToShow" [required]="column.lookup.required"
+              type="autocomplete" [model]="getData(dataRow, column, false)"
+              (modelChange)="updateData(dataRow, column, $event)" [disabled]='!editMode || !column.editable'>
+            </aq-lookup>
+            <aq-lookup *ngIf="column.type === 'lookup'" [array]="column.lookup.array"
+              [propertiesToShow]="column.lookup.propertiesToShow" [required]="column.lookup.required"
+              [model]="getData(dataRow, column, false)" (modelChange)="updateData(dataRow, column, $event)"
+              [disabled]='!editMode || !column.editable'>
+            </aq-lookup>
+            <aq-lookup *ngIf="column.type === 'multiselect'" [array]="column.lookup.array"
+              [model]="getData(dataRow, column, false)" [propertiesToShow]="column.lookup.propertiesToShow"
+              [disabled]='!editMode || !column.editable' type="multiselect" [required]="column.lookup.required"
+              (modelChange)="updateData(dataRow, column, $event)">
+            </aq-lookup>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

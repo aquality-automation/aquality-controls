@@ -1,0 +1,59 @@
+<div class="table-example">
+  <h3>Table Example</h3>
+  <div class="table-wrapper">
+    <aq-table [data]="data" [columnsToShow]=columnsToShow>Loading...</aq-table>
+  </div>
+</div>
+
+<div class="Row">
+  <div class="Column lookup-example example">
+    <h3>Lookup Example</h3>
+    <div class="wrapper">
+      <aq-lookup [array]="data" [(model)]="lookupValue" [propertiesToShow]="['fullname']">Loading...</aq-lookup>
+      <pre>
+{{toSting(lookupValue)}}
+      </pre>
+    </div>
+  </div>
+
+  <div class="Column autocomplete-example example">
+    <h3>Autocomplete Example</h3>
+    <div class="wrapper">
+      <aq-lookup type="autocomplete" [array]="data" [(model)]="autocompleteValue" [propertiesToShow]="['fullname']">Loading...</aq-lookup>
+      <pre>
+{{toSting(autocompleteValue)}}
+      </pre>
+    </div>
+  </div>
+
+  <div class="Column ms-example example">
+    <h3>Multiselect Example</h3>
+    <div class="wrapper">
+      <aq-lookup type="multiselect" [array]="data" [(model)]="multiselectValue" [propertiesToShow]="['fullname']">Loading...</aq-lookup>
+    </div>
+    <pre>
+{{toSting(multiselectValue)}}
+    </pre>
+  </div>
+
+  <div class="Column inline-example example">
+    <h3>Inline Example</h3>
+    <div class="wrapper">
+      <aq-inline-input ngModel="Value you can edit" (errorText)="setInlineerror($event)" max="10">Loading...</aq-inline-input>
+      <pre>{{inlineError}}</pre>
+    </div>
+  </div>
+
+  <div class="Column button-example example">
+    <h3>Button Example</h3>
+    <div class="wrapper">
+      <aq-button (clicked)="clicked()" name="Simple">Loading...</aq-button>
+      <pre>{{clickAction}}</pre>
+      <aq-button (toggled)="toggled($event)" (clicked)="toggleClicked()"name="Toggler" [toggleStatus]="false">Loading...</aq-button>
+      <pre>{{toggleClickAction}}</pre>
+      <pre>{{toggle}}</pre>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

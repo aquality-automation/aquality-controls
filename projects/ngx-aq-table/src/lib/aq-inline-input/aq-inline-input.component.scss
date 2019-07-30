@@ -1,0 +1,82 @@
+div {
+  font: normal 13px Verdana, Arial, sans-serif;
+}
+
+.sm .input{
+  height: 20px;
+}
+
+.md .input{
+  height: 25px;
+}
+
+.lg .input{
+  height: 30px;
+}
+
+.edit.input{
+    border: solid 1px var(--main-sidebar-bg);
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+}
+
+.input {
+  font: normal 13px Verdana, Arial, sans-serif;
+  min-width: 50px;
+  box-sizing: border-box;
+  padding-left: 5px;
+  background: inherit;
+  filter: brightness(110%);
+  outline: none;
+}
+
+.input:focus {
+  box-shadow: 0 0 1px 0 var(--main-sidebar-bg);
+}
+
+.placeholder{
+  color: var(--main-grey);
+}
+
+.preview{
+  border-collapse: separate; 
+  border: solid 1px transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  display: table;
+}
+
+.preview:hover {
+  border: solid 1px var(--main-grey);
+}
+
+.preview:hover span {
+  fill:black;
+}
+
+.preview span {
+  padding-left: 5px; 
+  fill: var(--main-grey);
+}
+
+.preview div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.magic-input {
+  border: solid 1px var(--main-sidebar-bg);
+  border-radius: 5px;
+  font: normal 13px Verdana, Arial, sans-serif;
+  min-width: 50px;
+  box-sizing: border-box;
+  padding-left: 5px;
+  background: inherit;
+  filter: brightness(110%);
+  outline: none;
+}
+
+.magic-input:focus {
+  box-shadow: 0 0 1px 0 var(--main-sidebar-bg);
+}

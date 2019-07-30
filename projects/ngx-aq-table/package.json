@@ -1,0 +1,11 @@
+{
+  "name": "aquality-controls",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.1.2",
+    "@angular/core": "^8.1.2",
+    "@fortawesome/angular-fontawesome": "^0.4.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.6",
+    "@fortawesome/free-solid-svg-icons": "^5.4.1"
+  }
+}

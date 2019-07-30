@@ -1,0 +1,37 @@
+<div class="lookup-text" *ngIf="disabled">
+  {{selectedItemText}}
+</div>
+<div *ngIf="array && !disabled" class="selector-container" (clickOutside)="toggleOff()" (keyup.esc)="toggleOff()"
+  [clickOutsideEnabled]="!hidden" [clickOutsideEvents]="'mouseup'">
+  <button *ngIf="type == 'lookup'" type="button" class="btn selector-button no-margin" (click)="toggle()">
+    <p class="button-text no-margin">{{selectedItemText || placeholder}}</p>
+    <fa-icon class="caret" [icon]="fa.faCaretDown"></fa-icon>
+  </button>
+  <input *ngIf="type == 'autocomplete'" class="autocomplete" autocomplete="off" [placeholder]="placeholder" (focus)="toggleOn()"
+    (click)="toggleOn()" (keyup.esc)="toggleOff()" (ngModelChange)="filter($event)" [ngModel]="selectedItemText">
+  <div *ngIf="type == 'multiselect'">
+    <div tabindex="0" (click)="toggleOn()" class="autocomplete ms-main-selector">
+      <div class="ms-placeholder" *ngIf="!model || model.length < 1"> {{placeholder}} </div>
+      <div class="ms-box" *ngFor="let item of model">
+        {{textToShow(item)}} <fa-icon class="btn-hover" [icon]="fa.faTimes" (click)="removeFromSelected(item)"></fa-icon>
+      </div>
+      <fa-icon class="ms caret" [icon]="fa.faCaretDown" (click)="toggle()"></fa-icon>
+    </div>
+  </div>
+  <div *ngIf="filteredArray" class="selector-suggestions" [hidden]="hidden" [ngClass]="{ 'cut-long-text': cutLongText }">
+    <ul>
+      <li *ngIf="type == 'multiselect'">
+        <input class="autocomplete" autocomplete="off" [required]="!allowEmptyValue" placeholder="Search..."
+          (ngModelChange)="filter($event)" [ngModel]="selectedItemText">
+      </li>
+      <li *ngIf="filteredArray.length == 0">No items</li>
+      <li *ngIf="!required && type != 'multiselect' && model != emptyValue" class="btn-hover" tabindex="0" (keyup.enter)="select(emptyValue)"
+        (mousedown)="select(emptyValue)">
+        {{placeholder}}
+      </li>
+      <li class="btn-hover" *ngFor="let item of filteredArray" tabindex="0" (keyup.enter)="select(item)" (mousedown)="select(item)">
+        {{textToShow(item)}}
+      </li>
+    </ul>
+  </div>
+</div>
