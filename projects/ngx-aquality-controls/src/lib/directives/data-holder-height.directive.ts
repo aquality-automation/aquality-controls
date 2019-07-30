@@ -23,6 +23,7 @@ export class DataHeightDirective implements AfterViewChecked {
         const dataWrapper = parent.getElementsByClassName('data-holder').item(0) as HTMLElement;
         const globalWrapper = parent.parentElement.parentElement as HTMLElement;
 
+        if (!globalWrapper || !headerTable) { return; }
         dataWrapper.style.height =
             `${globalWrapper.getBoundingClientRect().height - headerTable.getBoundingClientRect().height}px`;
     }

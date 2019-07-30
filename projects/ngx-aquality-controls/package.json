@@ -1,5 +1,5 @@
 {
-  "name": "aquality-controls",
+  "name": "ngx-aquality-controls",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^8.1.2",

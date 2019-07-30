@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aqulity-controls": {
+    "aqulity-controls-example": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -121,33 +121,33 @@
         }
       }
     },
-    "ngx-aq-table": {
+    "ngx-aquality-table": {
       "projectType": "library",
-      "root": "projects/aq-table",
-      "sourceRoot": "projects/aq-table/src",
+      "root": "projects/ngx-aquality-controls",
+      "sourceRoot": "projects/ngx-aquality-controls/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/aq-table/tsconfig.lib.json",
-            "project": "projects/aq-table/ng-package.json"
+            "tsConfig": "projects/ngx-aquality-controls/tsconfig.lib.json",
+            "project": "projects/ngx-aquality-controls/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/aq-table/src/test.ts",
-            "tsConfig": "projects/aq-table/tsconfig.spec.json",
-            "karmaConfig": "projects/aq-table/karma.conf.js"
+            "main": "projects/ngx-aquality-controls/src/test.ts",
+            "tsConfig": "projects/ngx-aquality-controls/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-aquality-controls/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/aq-table/tsconfig.lib.json",
-              "projects/aq-table/tsconfig.spec.json"
+              "projects/ngx-aquality-controls/tsconfig.lib.json",
+              "projects/ngx-aquality-controls/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -156,5 +156,5 @@
         }
       }
     }},
-  "defaultProject": "aqulity-controls"
+  "defaultProject": "aqulity-controls-example"
 }

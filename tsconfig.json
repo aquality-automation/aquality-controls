@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "aq-table": [
-        "dist/aq-table"
+      "ngx-aquality-controls": [
+        "dist/ngx-aquality-controls"
       ],
-      "aq-table/*": [
-        "dist/aq-table/*"
+      "ngx-aquality-controls/*": [
+        "dist/ngx-aquality-controls/*"
       ]
     }
   },

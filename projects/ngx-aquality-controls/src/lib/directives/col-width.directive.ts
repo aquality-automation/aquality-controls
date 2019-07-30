@@ -32,6 +32,7 @@ export class MatchWidthDirective implements AfterViewChecked {
         for (let i = 0; i < hiddenHeaders.length; i++) {
             const curHiddenHeader = hiddenHeaders.item(i);
             const curHeader = headers.item(i);
+            if (!curHiddenHeader || !curHeader) { return; }
             const width = Math.floor(
                 curHiddenHeader.getBoundingClientRect().width >= curHeader.getBoundingClientRect().width
                     ? curHiddenHeader.getBoundingClientRect().width

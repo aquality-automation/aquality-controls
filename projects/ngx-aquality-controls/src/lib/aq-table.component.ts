@@ -89,7 +89,7 @@ export class AQTableComponent implements OnChanges {
 
   isLookup(type: string): boolean {
     if (type) {
-      return type.startsWith('lookup') || type.startsWith('autocomplete') || type.startsWith('multiselect');
+      return type === 'lookup' || type === 'autocomplete' || type === 'multiselect';
     }
     return false;
   }
